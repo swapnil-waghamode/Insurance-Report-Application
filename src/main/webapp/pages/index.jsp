@@ -23,7 +23,6 @@
 	<div class="container">
 
 		<h1 class="pb-3 pt-3">Report Application</h1>
-
 		<form:form action="search" modelAttribute="search" method="POST">
 
 			<table>
@@ -50,7 +49,7 @@
 						</form:select></td>
 				</tr>
 
-				<tr class="pt-2">
+				<tr >
 
 					<td>Start Date :</td>
 					<td><form:input path="startDate" type="date" /></td>
@@ -61,7 +60,12 @@
 				</tr>
 
 				<tr>
-					<td><input type="submit" value="Search"
+				    <td>
+				       <a href="/" class="btn btn-warning">Reset</a>
+				    </td>
+				   
+					<td>
+					<input type="submit" value="Search"
 						class="btn btn-primary"></td>
 
 				</tr>
@@ -82,7 +86,6 @@
 					<th>Plan Status</th>
 					<th>Start Date</th>
 					<th>End Date</th>
-					<th>Benefit Amount</th>
 				</tr>
 
 			</thead>
@@ -98,21 +101,20 @@
 			        <td>${plan.planStatus}</td>
 			        <td>${plan.planStartDate}</td>
 			        <td>${plan.planEndDate}</td>
-			        <td>${plan.benefitAmt}</td>
 			     
 			     </tr>
 			 </c:forEach>
 			
+			<tr>
+			   <c:if test="${empty plans}">
+			    <td colspan="7" class="text-center"> No Records Found</td>
+			</c:if>
+			
+			</tr>
+			
 			
 			
 			</tbody>
-
-
-
-
-
-
-
 
 		</table>
 

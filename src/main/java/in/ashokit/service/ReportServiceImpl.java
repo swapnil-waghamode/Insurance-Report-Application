@@ -1,8 +1,9 @@
 package in.ashokit.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -35,16 +36,34 @@ public class ReportServiceImpl implements ReportService {
 		
 		CitizenPlan cp = new CitizenPlan();
 		
-		if(request.getPlanName() != null && request.getPlanName() != "") {
+		if( null != request.getPlanName() && !"".equals(request.getPlanName()) ) {
 			cp.setPlanName(request.getPlanName());
 		}
 		
-		if(request.getPlanStatus() != null && request.getPlanStatus() != "") {
+		if(null != request.getPlanStatus()  && !"".equals(request.getPlanStatus())) {
 			cp.setPlanStatus(request.getPlanStatus());
 		}
 		
-		if(request.getGender() != null && request.getGender() != "") {
+		if( null !=request.getGender() && !"".equals(request.getGender() )) {
 			cp.setGender(request.getGender());
+		}
+		
+		if(null != request.getStartDate() &&   !"".equals(request.getStartDate() )) {
+			String startDate = request.getStartDate();
+			
+		    DateTimeFormatter d = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		    
+		    LocalDate ld = LocalDate.parse(startDate, d);
+		    cp.setPlanStartDate(ld);
+		}
+		
+		if(null != request.getEndDate() &&   !"".equals(request.getEndDate() )) {
+			String endDate = request.getEndDate();
+			
+		    DateTimeFormatter d = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		    
+		    LocalDate ld = LocalDate.parse(endDate, d);
+		    cp.setPlanEndDate(ld);
 		}
 		
 		
