@@ -120,8 +120,8 @@
 
 		<hr>
 
-		Export : <a href="" class="btn btn-success">Excel</a> <a href=""
-			class="btn btn-danger">Pdf</a>
+		Export : <a href="excel" class="btn btn-success">Excel</a>
+		 <a href="pdf" class="btn btn-danger">Pdf</a>
 
 
 	</div>
